@@ -1,22 +1,23 @@
 const {Composer, Scenes} = require("telegraf");
-const bookData = require("./book.json");
+const {URL, CAPTION, BOOK_PATH} = require("./bookData");
 
 const bookStep = new Composer();
 bookStep.use(async (ctx) => {
   try {
-    const bookData = require('./book.json');
-
     await ctx.replyWithPhoto(
-      {url:bookData.url},
-      {caption:bookData.caption}
+      {url:URL},
+      {caption:CAPTION}
     );
 
-    const fs = require('fs');
-    const path = './public/karmaniy_spravochnik_po_piton.zip';
-    fs.readFile(path,async (err,data) => {
-      await ctx.sendDocument({source: data, filename: 'karmaniy_spravochnik_po_piton.zip'})
-      await ctx.scene.leave()
+    const fs = require('fs').promises;
+    const path = BOOK_PATH;
+    const data = await fs.readFile(path);
+    await ctx.sendDocument({
+      source: data,
+      filename: 'karmaniy_spravochnik_po_piton.zip'
     })
+    await ctx.scene.leave();
+
   } catch (e) {
     console.log(e);
   }
