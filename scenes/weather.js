@@ -1,10 +1,11 @@
 const {Composer, Scenes} = require("telegraf");
-
+const api = require('../api/openWeatherMap.js');
 const weatherStep = new Composer();
 weatherStep.use(async (ctx) => {
   try {
     //GET WEATHER FROM API
-    await ctx.replyWithHTML("Ну такая вот погода Канаде короче");
+    const weatherData = await api.getWeather();
+    await ctx.replyWithHTML(`В Канаде сейчас ${weatherData.weather[0].description}. Температура ${weatherData.main.temp}°C, ощущается как ${weatherData.main.feels_like}. Скорость ветра ${weatherData.wind.speed} м/с`);
     // return ctx.wizard.next();
     await ctx.scene.leave()
   } catch (e) {

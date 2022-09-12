@@ -1,10 +1,7 @@
+const axios = require("axios");
 const CANADA_LATITUDE = 60;
-const CANADA_LONGITUDE = 95;
-const API_URL = 'https://api.openweathermap.org/data/3.0/onecall'
-
-(function pidor() {
-  pidor()
-})();
+const CANADA_LONGITUDE = -95;
+const API_URL = 'https://api.openweathermap.org/data/2.5/weather?'
 
 class OWMApi {
   constructor(token) {
@@ -12,9 +9,9 @@ class OWMApi {
   }
 
   async getWeather() {
-    const weatherData = await fetch(`${API_URL}?lat=${CANADA_LATITUDE}&lon=${CANADA_LONGITUDE}&exclude=minutely,hourly,daily,alerts&appid=${this.token}`);
+    const weatherData = await axios.get(`${API_URL}lat=${CANADA_LATITUDE}&lon=${CANADA_LONGITUDE}&exclude=minutely,hourly,daily,alerts&lang=ru&units=metric&appid=${this.token}`)
 
-    return weatherData;
+    return weatherData.data;
   }
 }
 
