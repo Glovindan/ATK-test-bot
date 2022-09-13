@@ -36,10 +36,10 @@ const mailingStep = new Composer();
 mailingStep.on("text", async (ctx) => {
   try {
     const usersList = await db.getUsersList();
-    const senderId = ctx.message.from.id;
+    const senderId = ctx.message.from.id.toString();
     for (const data of usersList.rows) {
       await new Promise((res,rej) => {
-        if(!data.tgId === senderId) {
+        if(data.tgId !== senderId) {
           ctx.telegram.sendMessage(data.tgId, ctx.message.text)
             .then(() => res())
             .catch((e) => {
@@ -49,10 +49,12 @@ mailingStep.on("text", async (ctx) => {
               rej(e);
             })
         }
-        res();
+        res()
       })
     }
     ctx.reply("Рассылка успешно проведена");
+
+    await showMainKeyboard(ctx);
     await ctx.scene.leave()
   } catch (e) {
     console.log(e);

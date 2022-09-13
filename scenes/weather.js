@@ -4,7 +4,7 @@ const weatherStep = new Composer();
 weatherStep.use(async (ctx) => {
   try {
     const weatherData = await api.getWeather();
-    await ctx.replyWithHTML(`В Канаде сейчас ${weatherData.weather[0].description}. Температура ${weatherData.main.temp}°C, ощущается как ${weatherData.main.feels_like}. Скорость ветра ${weatherData.wind.speed} м/с`);
+    await ctx.replyWithHTML(`В Канаде сейчас ${weatherData.weather[0].description}. Температура ${weatherData.main.temp}°C, ощущается как ${weatherData.main.feels_like}°C. Скорость ветра ${weatherData.wind.speed} м/с`);
 
     await ctx.scene.leave()
   } catch (e) {
