@@ -23,7 +23,7 @@ mailingClickStep.hears("Уверен", async (ctx) => {
     console.log(e);
   }
 })
-mailingClickStep.hears("Отмена", async(ctx) => {
+mailingClickStep.hears("Отмена", async (ctx) => {
   try {
     await showMainKeyboard(ctx);
     return ctx.scene.leave();
@@ -38,13 +38,13 @@ mailingStep.on("text", async (ctx) => {
     const usersList = await db.getUsersList();
     const senderId = ctx.message.from.id.toString();
     for (const data of usersList.rows) {
-      await new Promise((res,rej) => {
-        if(data.tgId !== senderId) {
+      await new Promise((res, rej) => {
+        if (!data.tgId === senderId) {
           ctx.telegram.sendMessage(data.tgId, ctx.message.text)
             .then(() => res())
             .catch((e) => {
               if (e.response && e.response.error_code === 403) {
-                db.deleteUser(data.tgId).then(()=> res());
+                db.deleteUser(data.tgId).then(() => res());
               }
               rej(e);
             })

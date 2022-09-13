@@ -1,6 +1,6 @@
 const {Markup} = require("telegraf");
 const showMainKeyboard = async (ctx) => {
-  await ctx.reply ("Здравствуйте. Нажмите на любую интересующую Вас кнопку",
+  await ctx.reply("Здравствуйте. Нажмите на любую интересующую Вас кнопку",
     Markup.keyboard([
       ["Погода в Канаде"],
       ["Хочу почитать!"],
@@ -9,7 +9,7 @@ const showMainKeyboard = async (ctx) => {
 }
 
 const showMailingKeyboard = async (ctx) => {
-  await ctx.reply ("Вы выбрали рассылку всем пользователям. Вы уверены что хотите это сделать?",
+  await ctx.reply("Вы выбрали рассылку всем пользователям. Вы уверены что хотите это сделать?",
     Markup.keyboard([
       ["Уверен"],
       ["Отмена"]

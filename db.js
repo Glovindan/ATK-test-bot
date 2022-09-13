@@ -8,7 +8,7 @@ class DataBase {
       SELECT * FROM public.user WHERE "tgId" = '${tgId}';
     `)
 
-    if(!user.rows.length) {
+    if (!user.rows.length) {
       await pool.query(`
         INSERT INTO public.user("tgId") VALUES(${tgId});
       `)

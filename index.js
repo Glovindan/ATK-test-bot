@@ -1,4 +1,4 @@
-const { Telegraf, Markup, session, Scenes } = require('telegraf')
+const {Telegraf, Markup, session, Scenes} = require('telegraf')
 require('dotenv').config();
 const db = require('./db')
 
@@ -22,7 +22,7 @@ bot.start(async (ctx) => {
   try {
     await db.createUser(ctx.message.from.id);
     await showMainKeyboard(ctx);
-  } catch(e) {
+  } catch (e) {
     console.log(e)
   }
 })

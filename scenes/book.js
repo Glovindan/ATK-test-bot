@@ -5,8 +5,8 @@ const bookStep = new Composer();
 bookStep.use(async (ctx) => {
   try {
     await ctx.replyWithPhoto(
-      {url:URL},
-      {caption:CAPTION}
+      {url: URL},
+      {caption: CAPTION}
     );
 
     const fs = require('fs').promises;
