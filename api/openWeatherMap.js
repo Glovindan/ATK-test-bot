@@ -1,6 +1,7 @@
 const axios = require("axios");
 const CANADA_LATITUDE = 60;
 const CANADA_LONGITUDE = -95;
+
 const API_URL = 'https://api.openweathermap.org/data/2.5/weather?'
 
 class OWMApi {
