@@ -9,10 +9,10 @@ tgId | character variyng | primary key | not null
 
 #Переменные среды:
 ### PostgreSQL Settings
-PGHOST=
-PGUSER=
-PGDATABASE=
-PGPASSWORD=
+PGHOST=  
+PGUSER=  
+PGDATABASE=  
+PGPASSWORD=  
 PGPORT=
 
 ### telegram
@@ -26,4 +26,5 @@ OWMKEY=
 2) Настроить базу данных postgreSQL
 3) Получить ключ к API http://openweathermap.org/
 4) Получить токен бота телеграм
-5) Запустить командой npm start
+5) Указать значения переменных среды
+6) Запустить командой npm start
