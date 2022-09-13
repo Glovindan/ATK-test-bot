@@ -21,7 +21,7 @@ TGTOKEN=
 ### OpenWeatherMap api
 OWMKEY=
 
-# Инструкция по развёртыванию:
+## Инструкция по развёртыванию:
 1) Установить модули командой npm i
 2) Настроить базу данных postgreSQL
 3) Получить ключ к API http://openweathermap.org/
