@@ -40,16 +40,16 @@ mailingStep.on("text", async (ctx) => {
     for (const data of usersList.rows) {
       await new Promise((res, rej) => {
         if (!data.tgId === senderId) {
-          ctx.telegram.sendMessage(data.tgId, ctx.message.text)
-            .then(() => res())
-            .catch((e) => {
-              if (e.response && e.response.error_code === 403) {
-                db.deleteUser(data.tgId).then(() => res());
-              }
-              rej(e);
-            })
+          res()
         }
-        res()
+        ctx.telegram.sendMessage(data.tgId, ctx.message.text)
+          .then(() => res())
+          .catch((e) => {
+            if (e.response && e.response.error_code === 403) {
+              db.deleteUser(data.tgId).then(() => res());
+            }
+            rej(e);
+          })
       })
     }
     ctx.reply("Рассылка успешно проведена");
