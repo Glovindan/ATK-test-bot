@@ -39,8 +39,8 @@ mailingStep.on("text", async (ctx) => {
     const senderId = ctx.message.from.id.toString();
     for (const data of usersList.rows) {
       await new Promise((res, rej) => {
-        if (!data.tgId === senderId) {
-          res()
+        if (data.tgId === senderId) {
+          return res();
         }
         ctx.telegram.sendMessage(data.tgId, ctx.message.text)
           .then(() => res())
@@ -48,7 +48,7 @@ mailingStep.on("text", async (ctx) => {
             if (e.response && e.response.error_code === 403) {
               db.deleteUser(data.tgId).then(() => res());
             }
-            rej(e);
+            return rej(e);
           })
       })
     }
