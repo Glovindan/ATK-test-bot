@@ -7,7 +7,7 @@
 --- | --- | --- | ---
 tgId | character variyng | primary key | not null
 
-# Переменные среды:
+## Переменные среды:
 ### PostgreSQL Settings
 PGHOST=  
 PGUSER=  
