@@ -1,25 +1,27 @@
 # ATK-test-bot
 Тестовое задание для АТК. Телеграм-бот с неким функционалом
 
-Структура базы данных:
+## Структура базы данных:
 Таблица user:
-tgId | primary key | not null
+Название | Тип данных | Первичный ключ | Null
+--- | --- | --- | ---
+tgId | character variyng | primary key | not null
 
-Переменные среды:
-# PostgreSQL Settings
+#Переменные среды:
+### PostgreSQL Settings
 PGHOST=
 PGUSER=
 PGDATABASE=
 PGPASSWORD=
 PGPORT=
 
-# telegram
+### telegram
 TGTOKEN=
 
-# OpenWeatherMap api
+### OpenWeatherMap api
 OWMKEY=
 
-Инструкция по развёртыванию:
+# Инструкция по развёртыванию:
 1) Установить модули командой npm i
 2) Настроить базу данных postgreSQL
 3) Получить ключ к API http://openweathermap.org/
