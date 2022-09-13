@@ -10,8 +10,7 @@ bookStep.use(async (ctx) => {
     );
 
     const fs = require('fs').promises;
-    const path = BOOK_PATH;
-    const data = await fs.readFile(path);
+    const data = await fs.readFile(BOOK_PATH);
     await ctx.sendDocument({
       source: data,
       filename: 'karmaniy_spravochnik_po_piton.zip'
